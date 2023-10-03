@@ -63,7 +63,7 @@ struct LoginView: View {
                 dismissButton: .default(Text("OK"))
             )
         }
-        .onReceive(viewModel.$isAuthenticated) { isAuthenticated in
+        .onChange(of: viewModel.isAuthenticated) { isAuthenticated in
             isUserLoggedIn.wrappedValue = isAuthenticated
         }
         .padding()

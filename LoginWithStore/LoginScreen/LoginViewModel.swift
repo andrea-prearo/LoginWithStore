@@ -43,7 +43,9 @@ class LoginViewModel: ObservableObject {
         }
         .store(in: &cancellables)
 
-        store.$state.sink { [weak self] state in
+        store.state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
             guard let self else { return }
             self.hasValidCredentials = (state == .validCredentials)
             self.isLoading = (state == .authenticating)

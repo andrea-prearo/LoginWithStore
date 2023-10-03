@@ -12,12 +12,14 @@ protocol Store: ObservableObject {
     associatedtype State
     associatedtype Action
 
-    var state: State { get set }
-    func reduce(state: State, action: Action) -> State
+    var state: CurrentValueSubject<State, Never> { get set }
+    func reduce(state: State, action: Action) async -> State
 }
 
 extension Store {
     func send(_ action: Action) {
-        state = reduce(state: state, action: action)
+        Task {
+            state.value = await reduce(state: state.value, action: action)
+        }
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Andrea Prearo on 9/24/23.
 //
 
+import Combine
 import Foundation
 
 enum LoginError: Error {
@@ -69,7 +70,7 @@ enum LoginState: Equatable {
 }
 
 class LoginStore: Store {
-    @Published var state: LoginState = .idle
+    @Published var state: CurrentValueSubject<LoginState, Never> = .init(.idle)
 
     private var hasValidUsername = false
     private var hasValidPassword = false
@@ -77,7 +78,7 @@ class LoginStore: Store {
         return hasValidUsername && hasValidPassword
     }
 
-    func reduce(state: LoginState, action: LoginAction) -> LoginState {
+    func reduce(state: LoginState, action: LoginAction) async -> LoginState {
         var newState = state
 
         switch action {
@@ -100,11 +101,10 @@ class LoginStore: Store {
             }
         case .authenticate:
             newState = .authenticating
-//                // Simulate network call
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-//                    guard let self else { return }
-//                    self.state = .authenticated
-//                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+                    guard let self else { return }
+                    self.state.send(.authenticated)
+                }
         }
         return newState
     }
