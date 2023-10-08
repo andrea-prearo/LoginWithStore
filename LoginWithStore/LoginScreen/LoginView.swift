@@ -25,13 +25,6 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                NavigationLink(value: viewModel.isAuthenticated) {
-//                    HomeView()
-//                }
-//                NavigationLink(destination: HomeView(), isActive: $viewModel.isAuthenticated) {
-//                    EmptyView()
-//                }
-//                NavigationLink(value: <#T##Hashable?#>, label: <#T##() -> _#>)
                 GroupBox {
                     TextField("Username", text: $viewModel.username)
                         .textFieldStyle(.roundedBorder)

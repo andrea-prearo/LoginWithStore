@@ -1,5 +1,5 @@
 //
-//  LoginFSM.swift
+//  LoginStore.swift
 //  LoginWithStore
 //
 //  Created by Andrea Prearo on 9/24/23.
@@ -30,13 +30,13 @@ enum LoginCredential {
 }
 
 enum LoginAction: Equatable {
-    case validateCredential(LoginCredential)
+    case enteringCredential(LoginCredential)
     case authenticate
     case ackError
 
     static func == (lhs: LoginAction, rhs: LoginAction) -> Bool {
         switch (lhs, rhs) {
-        case (.validateCredential(let credential1), .validateCredential(let credential2)):
+        case (.enteringCredential(let credential1), .enteringCredential(let credential2)):
             switch (credential1, credential2) {
             case (.username, .username):
                 return true
@@ -101,7 +101,7 @@ class LoginStore: Store {
         var newState = state
 
         switch action {
-        case .validateCredential(let credential):
+        case .enteringCredential(let credential):
             switch credential {
             case .username(let value):
                 hasValidUsername = validateUsername(value)
@@ -139,12 +139,15 @@ class LoginStore: Store {
         return newState
     }
 
-
     private func validateUsername(_ value: String) -> Bool {
+        // Way too simple `username` validation
+        // for illustration purposes only
         return value.count >= 8
     }
 
     private func validatePassword(_ value: String) -> Bool {
+        // Way too simple `password` validation
+        // for illustration purposes only
         return value.count >= 8
     }
 }
