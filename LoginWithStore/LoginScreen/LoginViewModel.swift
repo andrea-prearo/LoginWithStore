@@ -31,15 +31,15 @@ class LoginViewModel: ObservableObject {
     }
 
     private func setupSubscriptions() {
-        $username.sink { [weak self] username in
+        $username.sink { [weak self] value in
             guard let self else { return }
-            self.store.send(.validateCredential(.username(username)))
+            self.store.send(.enteringCredential(.username(value)))
         }
         .store(in: &cancellables)
 
-        $password.sink { [weak self] password in
+        $password.sink { [weak self] value in
             guard let self else { return }
-            self.store.send(.validateCredential(.password(password)))
+            self.store.send(.enteringCredential(.password(value)))
         }
         .store(in: &cancellables)
 
