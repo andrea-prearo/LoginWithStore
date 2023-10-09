@@ -13,7 +13,6 @@
 		69C9DA3F2AC0A18B0029216F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C9DA3E2AC0A18B0029216F /* LoginView.swift */; };
 		69C9DA412AC0A18D0029216F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69C9DA402AC0A18D0029216F /* Assets.xcassets */; };
 		69C9DA442AC0A18D0029216F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69C9DA432AC0A18D0029216F /* Preview Assets.xcassets */; };
-		69C9DA4E2AC0A18D0029216F /* LoginWithStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C9DA4D2AC0A18D0029216F /* LoginWithStoreTests.swift */; };
 		69C9DA582AC0A18D0029216F /* LoginWithStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C9DA572AC0A18D0029216F /* LoginWithStoreUITests.swift */; };
 		69C9DA5A2AC0A18D0029216F /* LoginWithStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C9DA592AC0A18D0029216F /* LoginWithStoreUITestsLaunchTests.swift */; };
 		69C9DA672AC0A19F0029216F /* LoginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C9DA662AC0A19F0029216F /* LoginStore.swift */; };
@@ -22,6 +21,8 @@
 		69D7A9D42AC319D500FA17D8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D7A9D32AC319D500FA17D8 /* HomeView.swift */; };
 		69D7AA0F2AC3D03A00FA17D8 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D7AA0E2AC3D03A00FA17D8 /* LandingView.swift */; };
 		69D7AA112AC3D15100FA17D8 /* isUserLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D7AA102AC3D15100FA17D8 /* isUserLoggedIn.swift */; };
+		69D83FC42AD390F800359F0C /* LoginStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D83FC32AD390F800359F0C /* LoginStoreTests.swift */; };
+		69D83FCA2AD3959900359F0C /* LoginScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D83FC92AD3959900359F0C /* LoginScreenTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,6 @@
 		69C9DA402AC0A18D0029216F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69C9DA432AC0A18D0029216F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		69C9DA492AC0A18D0029216F /* LoginWithStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginWithStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69C9DA4D2AC0A18D0029216F /* LoginWithStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithStoreTests.swift; sourceTree = "<group>"; };
 		69C9DA532AC0A18D0029216F /* LoginWithStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginWithStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69C9DA572AC0A18D0029216F /* LoginWithStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithStoreUITests.swift; sourceTree = "<group>"; };
 		69C9DA592AC0A18D0029216F /* LoginWithStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -60,6 +60,8 @@
 		69D7A9D32AC319D500FA17D8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		69D7AA0E2AC3D03A00FA17D8 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		69D7AA102AC3D15100FA17D8 /* isUserLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isUserLoggedIn.swift; sourceTree = "<group>"; };
+		69D83FC32AD390F800359F0C /* LoginStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStoreTests.swift; sourceTree = "<group>"; };
+		69D83FC92AD3959900359F0C /* LoginScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +136,7 @@
 		69C9DA4C2AC0A18D0029216F /* LoginWithStoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				69C9DA4D2AC0A18D0029216F /* LoginWithStoreTests.swift */,
+				69D83FC22AD390E000359F0C /* LoginScreen */,
 			);
 			path = LoginWithStoreTests;
 			sourceTree = "<group>";
@@ -142,6 +144,7 @@
 		69C9DA562AC0A18D0029216F /* LoginWithStoreUITests */ = {
 			isa = PBXGroup;
 			children = (
+				69D83FC82AD3958D00359F0C /* LoginScreen */,
 				69C9DA572AC0A18D0029216F /* LoginWithStoreUITests.swift */,
 				69C9DA592AC0A18D0029216F /* LoginWithStoreUITestsLaunchTests.swift */,
 			);
@@ -189,6 +192,22 @@
 				69D7AA102AC3D15100FA17D8 /* isUserLoggedIn.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		69D83FC22AD390E000359F0C /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				69D83FC32AD390F800359F0C /* LoginStoreTests.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		69D83FC82AD3958D00359F0C /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				69D83FC92AD3959900359F0C /* LoginScreenTests.swift */,
+			);
+			path = LoginScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +281,7 @@
 					};
 					69C9DA482AC0A18D0029216F = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 						TestTargetID = 69C9DA382AC0A18B0029216F;
 					};
 					69C9DA522AC0A18D0029216F = {
@@ -338,7 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69C9DA4E2AC0A18D0029216F /* LoginWithStoreTests.swift in Sources */,
+				69D83FC42AD390F800359F0C /* LoginStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69D83FCA2AD3959900359F0C /* LoginScreenTests.swift in Sources */,
 				69C9DA582AC0A18D0029216F /* LoginWithStoreUITests.swift in Sources */,
 				69C9DA5A2AC0A18D0029216F /* LoginWithStoreUITestsLaunchTests.swift in Sources */,
 			);
@@ -546,15 +567,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5BZJ5S7SH7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aprearo.LoginWithStoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoginWithStore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LoginWithStore";
@@ -566,11 +589,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5BZJ5S7SH7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aprearo.LoginWithStoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -589,6 +613,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5BZJ5S7SH7;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aprearo.LoginWithStoreUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -607,6 +632,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5BZJ5S7SH7;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aprearo.LoginWithStoreUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
