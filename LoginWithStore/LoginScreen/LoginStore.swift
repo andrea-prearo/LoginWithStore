@@ -8,9 +8,20 @@
 import Combine
 import Foundation
 
-enum LoginError: Error {
+enum LoginError: Error, Equatable {
     case invalidCredentials
     case networkError(Error)
+
+    static func == (lhs: LoginError, rhs: LoginError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidCredentials, .invalidCredentials):
+            return true
+        case (.networkError(_), .networkError(_)):
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 enum LoginCredential {
@@ -21,6 +32,7 @@ enum LoginCredential {
 enum LoginAction: Equatable {
     case validateCredential(LoginCredential)
     case authenticate
+    case ackError
 
     static func == (lhs: LoginAction, rhs: LoginAction) -> Bool {
         switch (lhs, rhs) {
@@ -101,10 +113,15 @@ class LoginStore: Store {
             }
         case .authenticate:
             newState = .authenticating
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-                    guard let self else { return }
-                    self.state.send(.authenticated)
-                }
+            // Simulate network call
+            // since we're not using a real
+            // authentication service
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+                guard let self else { return }
+                self.state.send(.authenticated)
+            }
+        case .ackError:
+            newState = .validCredentials
         }
         return newState
     }

@@ -30,6 +30,10 @@ class LoginViewModel: ObservableObject {
         store.send(.authenticate)
     }
 
+    func ackError() {
+        store.send(.ackError)
+    }
+
     private func setupSubscriptions() {
         $username.sink { [weak self] value in
             guard let self else { return }
