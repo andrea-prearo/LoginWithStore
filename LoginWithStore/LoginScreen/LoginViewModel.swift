@@ -54,7 +54,7 @@ class LoginViewModel: ObservableObject {
             self.hasValidCredentials = (state == .validCredentials)
             self.isLoading = (state == .authenticating)
             self.isAuthenticated = (state == .authenticated)
-            if case let .error(error) = state {
+            if case let .failure(error) = state {
                 self.error = error
             } else {
                 self.error = nil

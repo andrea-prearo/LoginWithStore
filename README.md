@@ -1,5 +1,5 @@
 # LoginWithStore
 
-A sample project to illustrate how it's possible to handle complex UI state with a Redux/MVI based approach.
+A sample project to illustrate how it's possible to handle complex UI state with a Redux Store based approach.
 
-![Login with FSM](./LoginWithFSM.gif)
+![Login with Store](./LoginWithStore.gif)

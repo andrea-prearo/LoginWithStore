@@ -59,7 +59,7 @@ enum LoginState: Equatable {
     case validCredentials
     case authenticating
     case authenticated
-    case error(LoginError)
+    case failure(LoginError)
 
     static func == (lhs: LoginState, rhs: LoginState) -> Bool {
         switch (lhs, rhs) {
@@ -73,7 +73,7 @@ enum LoginState: Equatable {
             return true
         case (.authenticated, .authenticated):
             return true
-        case (.error(_), .error(_)):
+        case (.failure(_), .failure(_)):
             return true
         default:
             return false
@@ -91,6 +91,13 @@ class LoginStore: Store {
     }
 
     func reduce(state: LoginState, action: LoginAction) async -> LoginState {
+        let hasActiveError = {
+            if case .failure(_) = state {
+                return true
+            }
+            return false
+        }()
+
         var newState = state
 
         switch action {
@@ -98,17 +105,21 @@ class LoginStore: Store {
             switch credential {
             case .username(let value):
                 hasValidUsername = validateUsername(value)
-                if hasValidCredentials {
-                    newState = .validCredentials
-                } else {
-                    newState = .validatingCredentials
+                if !hasActiveError {
+                    if hasValidCredentials {
+                        newState = .validCredentials
+                    } else {
+                        newState = .validatingCredentials
+                    }
                 }
             case .password(let value):
                 hasValidPassword = validatePassword(value)
-                if hasValidCredentials {
-                    newState = .validCredentials
-                } else {
-                    newState = .validatingCredentials
+                if !hasActiveError {
+                    if hasValidCredentials {
+                        newState = .validCredentials
+                    } else {
+                        newState = .validatingCredentials
+                    }
                 }
             }
         case .authenticate:

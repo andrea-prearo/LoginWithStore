@@ -14,7 +14,7 @@ class LoginStoreTest: XCTestCase {
     private let sut = LoginStore()
 
     func testSuccessfulLoginTransitions() {
-        var expectedStateSequence: [LoginState] = [
+        let expectedStateSequence: [LoginState] = [
             .idle,
             .validatingCredentials,
             .validCredentials,
@@ -42,15 +42,11 @@ class LoginStoreTest: XCTestCase {
     }
 
     func testErrorAckTransition() {
-        let expectation = expectation(description: "Successfully acknowledge error")
-        expectation.isInverted = true
-
         XCTAssertEqual(sut.state.value, .idle)
-        sut.state.value = .error(.invalidCredentials)
-        XCTAssertEqual(sut.state.value, .error(.invalidCredentials))
+        sut.state.value = .failure(.invalidCredentials)
+        XCTAssertEqual(sut.state.value, .failure(.invalidCredentials))
         sut.send(.ackError)
-
-        wait(for: [expectation], timeout: 1.0)
+        sleep(1)
         XCTAssertEqual(sut.state.value, .validCredentials)
     }
 }

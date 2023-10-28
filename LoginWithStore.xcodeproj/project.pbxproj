@@ -89,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69BE36432AF8943A00E7F260 /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				698404672AC8E114008C78B0 /* Store.swift */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
 		69C9DA302AC0A18B0029216F = {
 			isa = PBXGroup;
 			children = (
@@ -116,11 +124,11 @@
 				69D7A9D22AC319AF00FA17D8 /* HomeScreen */,
 				69D7AA0D2AC3CE8A00FA17D8 /* LandingScreen */,
 				69D7A9D12AC3195B00FA17D8 /* LoginScreen */,
+				69BE36432AF8943A00E7F260 /* Redux */,
 				69C9DA6C2AC0CCA30029216F /* Views */,
 				69C9DA3C2AC0A18B0029216F /* LoginWithStoreApp.swift */,
 				69C9DA402AC0A18D0029216F /* Assets.xcassets */,
 				69C9DA422AC0A18D0029216F /* Preview Content */,
-				698404672AC8E114008C78B0 /* Store.swift */,
 			);
 			path = LoginWithStore;
 			sourceTree = "<group>";
