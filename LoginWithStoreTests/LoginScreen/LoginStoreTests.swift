@@ -43,7 +43,7 @@ class LoginStoreTest: XCTestCase {
 
     func testErrorAckTransition() {
         XCTAssertEqual(sut.state.value, .idle)
-        sut.state.value = .failure(.invalidCredentials)
+        sut.send(.failure(.invalidCredentials))
         XCTAssertEqual(sut.state.value, .failure(.invalidCredentials))
         sut.send(.ackError)
         sleep(1)

@@ -32,6 +32,8 @@ enum LoginCredential {
 enum LoginAction: Equatable {
     case enteringCredential(LoginCredential)
     case authenticate
+    case authenticated
+    case failure(LoginError)
     case ackError
 
     static func == (lhs: LoginAction, rhs: LoginAction) -> Bool {
@@ -90,15 +92,13 @@ class LoginStore: Store {
         return hasValidUsername && hasValidPassword
     }
 
-    func reduce(state: LoginState, action: LoginAction) async -> LoginState {
+    func reduce(state: inout LoginState, action: LoginAction) -> SideEffect<LoginAction> {
         let hasActiveError = {
             if case .failure(_) = state {
                 return true
             }
             return false
         }()
-
-        var newState = state
 
         switch action {
         case .enteringCredential(let credential):
@@ -107,36 +107,42 @@ class LoginStore: Store {
                 hasValidUsername = validateUsername(value)
                 if !hasActiveError {
                     if hasValidCredentials {
-                        newState = .validCredentials
+                        state = .validCredentials
                     } else {
-                        newState = .validatingCredentials
+                        state = .validatingCredentials
                     }
                 }
+                return .none
             case .password(let value):
                 hasValidPassword = validatePassword(value)
                 if !hasActiveError {
                     if hasValidCredentials {
-                        newState = .validCredentials
+                        state = .validCredentials
                     } else {
-                        newState = .validatingCredentials
+                        state = .validatingCredentials
                     }
                 }
+                return .none
             }
         case .authenticate:
-            newState = .authenticating
-            // Simulate network call
-            // since we're not using a real
-            // authentication service
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 2.0) { [weak self] in
-                guard let self else { return }
-                DispatchQueue.main.async {
-                    self.state.send(.authenticated)
-                }
+            state = .authenticating
+            return .run { operation in
+                // Simulate network call
+                // since we're not using a real
+                // authentication service
+                sleep(2)
+                await operation.send(.authenticated)
             }
+        case .authenticated:
+            state = .authenticated
+            return .none
+        case .failure(let error):
+            state = .failure(error)
+            return .none
         case .ackError:
-            newState = .validCredentials
+            state = .validCredentials
+            return .none
         }
-        return newState
     }
 
     private func validateUsername(_ value: String) -> Bool {
